@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173824">
+  <meta name="description" content="Gabung ke World of GAR, server Minecraft untuk pemain Java dan Bedrock.">
+  <title>World of GAR — Server Minecraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/world-of-gar-hero.jpg" fetchpriority="high">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #173824;
+      --forest-deep: #102b1c;
+      --grass: #75c64c;
+      --lime: #c8f06a;
+      --sun: #ffd451;
+      --paper: #f7f4df;
+      --ink: #203324;
+      --muted: #63705e;
+      --pixel: 'Press Start 2P', 'Courier New', monospace;
+      --sans: 'Nunito Sans', 'Trebuchet MS', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    body, a, button { cursor: url('assets/rw-designer-cursor-24907.png') 8 8, auto; }
+    .wrap { width: min(1180px, calc(100% - 52px)); margin-inline: auto; }
+    .topbar { position: absolute; inset: 0 0 auto; z-index: 5; padding: 22px 0; color: #fff; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; background: #80c84e; color: #193a23; border: 3px solid #d1ed83; box-shadow: inset -5px -5px rgba(34,84,39,.3), 3px 3px 0 rgba(12,35,20,.35); font: 10px var(--pixel); }
+    .brand-name { display: block; font: 9px/1.6 var(--pixel); letter-spacing: -.06em; text-shadow: 0 2px 8px #173824; }
+    .brand-tag { display: block; margin-top: 4px; color: #d4e8c2; font-size: 9px; font-weight: 800; letter-spacing: .15em; }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 900; }
+    .nav-links a:not(.nav-cta) { color: #f5f6e9; text-shadow: 0 1px 8px #173824; }
+    .nav-links a:not(.nav-cta):hover { color: var(--lime); }
+    .nav-cta { padding: 13px 17px; background: var(--sun); color: #29361d; box-shadow: 0 4px 0 #bb812f; font-size: 11px; font-weight: 1000; letter-spacing: .035em; transition: transform .2s, box-shadow .2s; }
+    .nav-cta:hover { transform: translateY(2px); box-shadow: 0 2px 0 #bb812f; }
+
+    .hero { min-height: 730px; height: min(900px, 100svh); position: relative; display: flex; align-items: center; overflow: hidden; isolation: isolate; background: #245e37; color: #fff; }
+    .hero-art { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 53%; }
+    .hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgba(9,28,19,.86) 0%,rgba(9,28,19,.67) 32%,rgba(9,28,19,.18) 67%,rgba(9,28,19,.02) 100%),linear-gradient(0deg,rgba(9,28,19,.43),transparent 34%); }
+    .hero-content { padding-top: 68px; padding-bottom: 50px; position: relative; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 9px 12px; background: rgba(16,43,28,.64); border: 1px solid rgba(218,240,164,.4); color: #e5f4a1; font: 9px var(--pixel); letter-spacing: .02em; }
+    .eyebrow i { width: 7px; height: 7px; display: inline-block; background: var(--lime); box-shadow: 0 0 12px var(--lime); }
+    h1 { margin: 27px 0 20px; text-transform: uppercase; }
+    .title-small { display: block; color: #fffdf0; font: clamp(25px,4.2vw,47px)/1.6 var(--pixel); letter-spacing: -.095em; text-shadow: 3px 4px 0 rgba(14,43,25,.6); }
+    .title-large { display: block; color: var(--lime); font: clamp(58px,10vw,112px)/1.17 var(--pixel); letter-spacing: -.1em; text-shadow: 5px 7px 0 #375b30, 7px 10px 0 rgba(13,39,23,.35); }
+    .hero-copy { max-width: 475px; margin: 0; color: #f1f3e4; font-size: 17px; line-height: 1.7; text-shadow: 0 2px 12px rgba(0,0,0,.28); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 29px; }
+    .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; padding: 0 21px; background: var(--sun); color: #26351e; box-shadow: 0 5px 0 #b37b2c; font-size: 11px; font-weight: 1000; letter-spacing: .06em; transition: transform .2s, box-shadow .2s; }
+    .button:hover { transform: translateY(2px); box-shadow: 0 3px 0 #b37b2c; }
+    .button.ghost { background: rgba(14,39,24,.35); color: white; border: 1px solid rgba(255,255,255,.55); box-shadow: none; }
+    .button.ghost:hover { background: rgba(14,39,24,.65); }
+    .hero-editions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 35px; }
+    .edition-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 11px; background: rgba(14,39,24,.54); border: 1px solid rgba(255,255,255,.2); color: #edf3dc; font-size: 10px; font-weight: 900; letter-spacing: .08em; }
+    .edition-chip b { color: var(--lime); font: 8px var(--pixel); }
+    .hero-corner { position: absolute; right: 28px; bottom: 26px; color: rgba(255,255,255,.8); font: 8px var(--pixel); letter-spacing: .08em; writing-mode: vertical-rl; }
+
+    .join { position: relative; padding: 91px 0 100px; background: var(--paper); }
+    .join:before { content: ''; position: absolute; inset: 0 0 auto; height: 9px; background: repeating-linear-gradient(90deg,#6cb54a 0 42px,#9ece5e 42px 84px,#f0c54b 84px 126px,#e18c46 126px 168px,#5cb8c3 168px 210px); }
+    .join-head { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 34px; }
+    .kicker { color: #548c3d; font: 9px var(--pixel); letter-spacing: .07em; text-transform: uppercase; }
+    h2 { margin: 15px 0 0; color: var(--ink); font-size: clamp(34px,5vw,58px); line-height: 1.02; letter-spacing: -.055em; font-weight: 1000; }
+    .join-intro { max-width: 340px; margin: 0 0 4px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .server-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .server-card { min-height: 245px; position: relative; overflow: hidden; padding: 26px 28px; background: #e3f1d1; border: 1px solid rgba(48,83,39,.14); box-shadow: 0 7px 0 rgba(45,71,34,.12); }
+    .server-card.bedrock { background: #d7eff0; }
+    .server-card:after { content: ''; position: absolute; right: -21px; bottom: -37px; width: 142px; height: 142px; border: 18px solid rgba(84,143,51,.09); transform: rotate(45deg); pointer-events: none; }
+    .server-card.bedrock:after { border-color: rgba(45,145,164,.11); }
+    .server-label { display: flex; align-items: center; gap: 12px; color: #4c6443; font-size: 11px; font-weight: 1000; letter-spacing: .13em; }
+    .voxel-icon { width: 48px; height: 48px; flex: 0 0 48px; display: grid; place-items: center; background: transparent; box-shadow: none; }
+    .voxel-icon svg { width: 48px; height: 48px; display: block; image-rendering: pixelated; shape-rendering: crispEdges; }
+    .server-value { position: relative; z-index: 1; display: block; margin: 24px 0 8px; color: #1e3928; font: clamp(13px,2vw,19px)/1.6 var(--pixel); letter-spacing: -.05em; overflow-wrap: anywhere; }
+    .server-meta { position: relative; z-index: 1; color: #64745d; font-size: 13px; font-weight: 700; }
+    .server-actions { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 23px; }
+    .port { color: #53644d; font-size: 12px; font-weight: 900; }
+    .copy { min-height: 39px; padding: 0 14px; border: 0; background: #2f7541; color: #fffbe8; font-size: 10px; font-weight: 1000; letter-spacing: .07em; transition: background .2s, transform .2s; }
+    .bedrock .copy { background: #287d8a; }
+    .copy:hover { transform: translateY(-2px); background: #245e35; }
+    .bedrock .copy:hover { background: #1b6673; }
+    .copy.copied { background: #263f2c; }
+
+    .how { position: relative; overflow: hidden; padding: 90px 0 95px; background: var(--forest); color: #f9f5df; }
+    .how:after { content: ''; position: absolute; top: -120px; right: -90px; width: 340px; height: 340px; border: 55px solid rgba(141,195,76,.08); transform: rotate(45deg); pointer-events: none; }
+    .how .kicker { color: #c7ec79; }
+    .how h2 { color: #fffbe8; }
+    .how-intro { max-width: 520px; margin: 17px 0 39px; color: #c6d4bd; font-size: 15px; line-height: 1.65; }
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; }
+    .step { min-height: 174px; padding: 22px 22px 24px; background: rgba(255,255,240,.07); border: 1px solid rgba(255,255,255,.13); }
+    .step-number { display: block; margin-bottom: 24px; color: #d4ed80; font: 12px var(--pixel); }
+    .step h3 { margin: 0 0 9px; color: #fffce9; font-size: 17px; font-weight: 1000; }
+    .step p { margin: 0; color: #bdcdb6; font-size: 13px; line-height: 1.65; }
+    .how-note { margin-top: 29px; color: #d4e1c6; font-size: 13px; }
+    .how-note strong { color: var(--sun); }
+    .news { padding: 87px 0 94px; background: #fffdf2; }
+    .news-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 31px; }
+    .news-heading h2 { margin-top: 14px; }
+    .news-heading p { max-width: 360px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .news-card { overflow: hidden; background: #fff; border: 1px solid rgba(38,67,34,.12); box-shadow: 0 5px 0 rgba(45,71,34,.1); }
+    .news-art { height: 152px; position: relative; overflow: hidden; display: flex; align-items: end; padding: 16px 18px; background: linear-gradient(140deg,#76be4a,#c9e77a); }
+    .news-art:before,.news-art:after { content: ''; position: absolute; width: 70px; height: 70px; background: rgba(255,255,255,.18); transform: rotate(45deg); }
+    .news-art:before { top: -25px; right: 30px; box-shadow: 48px 48px 0 rgba(24,77,39,.12); }
+    .news-art:after { bottom: -44px; right: -15px; width: 115px; height: 115px; border: 15px solid rgba(27,79,39,.12); background: transparent; }
+    .news-card:nth-child(3n + 2) .news-art { background: linear-gradient(140deg,#4fb7c5,#d3edcf); }
+    .news-card:nth-child(3n) .news-art { background: linear-gradient(140deg,#edae45,#f6df87); }
+    .news-art-tag { position: relative; z-index: 1; padding: 7px 9px; background: rgba(20,50,31,.83); color: #f4f4df; font: 8px var(--pixel); text-transform: uppercase; }
+    .news-card-body { padding: 18px 19px 21px; }
+    .news-meta { display: flex; align-items: center; gap: 8px; color: #73806c; font-size: 11px; font-weight: 800; }
+    .news-meta:before { content: ''; width: 6px; height: 6px; background: #75b94c; }
+    .news-card h3 { margin: 12px 0 8px; color: #263a2b; font-size: 19px; line-height: 1.25; font-weight: 1000; }
+    .news-card p { margin: 0; color: #677363; font-size: 13px; line-height: 1.65; }
+    .news-empty { min-height: 170px; display: flex; align-items: center; gap: 20px; padding: 28px; background: #edf4df; border: 1px solid rgba(38,67,34,.11); }
+    .news-empty-icon { width: 56px; height: 56px; flex: 0 0 56px; display: grid; place-items: center; background: #76be4a; color: #173824; box-shadow: inset -7px -7px rgba(24,77,39,.19); font: 8px var(--pixel); }
+    .news-empty h3 { margin: 0 0 7px; color: #2b432d; font-size: 18px; }
+    .news-empty p { margin: 0; color: #687664; font-size: 14px; line-height: 1.55; }
+    .news-error { color: #73543a; background: #fff0d5; border: 1px solid rgba(156,103,49,.2); padding: 20px; font-size: 14px; }
+    footer { padding: 24px 0; background: #102b1c; color: #cfdbc7; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 11px; }
+    .footer-brand { color: #e3f29c; font: 8px var(--pixel); }
+    .disclaimer { text-align: right; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #e19b37; outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto!important; animation-duration: .01ms!important; transition-duration: .01ms!important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 620px); }
+      .topbar { padding: 16px 0; }
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 12px 13px; font-size: 9px; }
+      .hero { min-height: 740px; height: 94svh; max-height: 900px; align-items: center; }
+      .hero-art { object-position: 58% center; }
+      .hero-shade { background: linear-gradient(90deg,rgba(9,28,19,.8),rgba(9,28,19,.53) 63%,rgba(9,28,19,.18)),linear-gradient(0deg,rgba(9,28,19,.5),transparent 45%); }
+      .hero-content { padding-top: 65px; }
+      .title-small { font-size: clamp(22px,5.4vw,38px); }
+      .title-large { font-size: clamp(54px,12vw,86px); }
+      .hero-copy { max-width: 390px; font-size: 15px; }
+      .hero-corner { display: none; }
+      .join { padding: 72px 0 78px; }
+      .join-head { align-items: start; flex-direction: column; gap: 13px; }
+      .join-intro { max-width: 510px; }
+      .server-cards { gap: 12px; }
+      .server-card { padding: 21px 19px; }
+      .server-value { font-size: clamp(11px,2.5vw,16px); }
+      .how { padding: 72px 0; }
+      .news { padding: 72px 0 78px; }
+      .news-heading { align-items: start; flex-direction: column; gap: 12px; }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 9px; }
+      .step { min-height: 0; display: grid; grid-template-columns: 45px 1fr; column-gap: 10px; padding: 18px; }
+      .step-number { grid-row: span 2; margin: 1px 0 0; }
+      .step h3 { margin-bottom: 5px; }
+    }
+    @media (max-width: 480px) {
+      .brand-mark { width: 36px; height: 36px; font-size: 8px; }
+      .brand-name { font-size: 7px; }
+      .brand-tag { font-size: 7px; }
+      .nav-cta { max-width: 116px; text-align: center; line-height: 1.4; }
+      .hero { min-height: 690px; background-position: 60% center; }
+      .hero-art { object-position: 61% center; }
+      .eyebrow { padding: 8px 9px; font-size: 7px; }
+      .title-small { font-size: clamp(20px,5.8vw,28px); }
+      .title-large { font-size: clamp(48px,12.6vw,64px); }
+      .hero-copy { font-size: 14px; }
+      .hero-actions { align-items: stretch; flex-direction: column; max-width: 245px; }
+      .button { width: 100%; }
+      .hero-editions { margin-top: 24px; }
+      .edition-chip { font-size: 9px; }
+      .server-cards { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .news-art { height: 130px; }
+      .news-empty { align-items: start; padding: 20px; }
+      .server-card { min-height: 218px; }
+      .server-value { font-size: 13px; }
+      .footer-inner { align-items: start; flex-direction: column; }
+      .disclaimer { text-align: left; line-height: 1.6; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Navigasi utama">
+      <a class="brand" href="#home" aria-label="World of GAR, beranda">
+        <span class="brand-mark">GAR</span>
+        <span><span class="brand-name">WORLD OF GAR</span><span class="brand-tag">SERVER MINECRAFT</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#cara-masuk">CARA MASUK</a>
+        <a href="#berita">BERITA</a>
+        <a class="nav-cta" href="#bergabung">GABUNG SEKARANG ↗</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <img class="hero-art" src="assets/world-of-gar-hero.jpg" alt="Dunia blok yang cerah dengan desa, portal, sungai, dan dua petualang" fetchpriority="high">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="wrap hero-content">
+        <div class="eyebrow"><i aria-hidden="true"></i> SERVER MINECRAFT · JAVA + BEDROCK</div>
+        <h1 id="hero-title"><span class="title-small">WORLD OF</span><span class="title-large">GAR</span></h1>
+        <p class="hero-copy">Dunia baru, teman baru, cerita baru. Pilih edisi Minecraft-mu dan mulai petualangan di World of GAR.</p>
+        <div class="hero-actions">
+          <a class="button" href="#bergabung">LIHAT ALAMAT SERVER ↓</a>
+          <a class="button ghost" href="#cara-masuk">CARA BERGABUNG</a>
+        </div>
+        <div class="hero-editions" aria-label="Edisi yang didukung">
+          <span class="edition-chip"><b>JAVA</b> EDITION</span>
+          <span class="edition-chip"><b>BEDROCK</b> EDITION</span>
+        </div>
+      </div>
+      <div class="hero-corner" aria-hidden="true">YOUR NEXT WORLD STARTS HERE</div>
+    </section>
+
+    <section class="join" id="bergabung" aria-labelledby="join-title">
+      <div class="wrap">
+        <div class="join-head reveal">
+          <div><div class="kicker">Java & Bedrock</div><h2 id="join-title">Satu server,<br>semua perangkat.</h2></div>
+          <p class="join-intro">World of GAR mendukung Minecraft Java dan Bedrock. Pilih edisi yang sesuai dengan perangkatmu, lalu salin alamat servernya.</p>
+        </div>
+        <div class="server-cards">
+          <article class="server-card reveal">
+            <div class="server-label"><span class="voxel-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path fill="#315c31" d="M3 9 16 2l13 7v15l-13 6-13-6z"/><path fill="#67a93c" d="M4 9 16 3l12 6-12 7z"/><path fill="#8dcc4c" d="m7 9 3-2 2 1-3 2zm8-4 3 1-2 2-3-1zm7 4 3-2 2 1-3 2zm-8 3 2-2 2 1-2 2z"/><path fill="#775137" d="M4 10 16 17v12L4 23z"/><path fill="#8d613f" d="m16 17 12-7v14l-12 5z"/><path fill="#a9794a" d="m7 13 2 1v2l-2-1zm5 3 2 1v2l-2-1zm8-1 2-1v2l-2 1zm4-4 2-1v2l-2 1z"/><path fill="#4e3327" d="M3 9 16 2l13 7v15l-13 6-13-7zm1 1v13l11 6V17zm24-1-11 7v13l11-5zM5 9l11 6 11-6-11-6z"/></svg></span> JAVA EDITION</div>
+            <code class="server-value">mc.argust.my.id</code>
+            <div class="server-meta">Alamat server</div>
+            <div class="server-actions"><span class="port">Tanpa port</span><button class="copy" data-copy="mc.argust.my.id">SALIN ALAMAT</button></div>
+          </article>
+          <article class="server-card bedrock reveal">
+            <div class="server-label"><span class="voxel-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path fill="#333d43" d="M3 9 16 2l13 7v15l-13 6-13-6z"/><path fill="#818c89" d="M4 9 16 3l12 6-12 7z"/><path fill="#a6aaa0" d="m6 8 3-2 2 1-3 2zm8-4 2 1-2 2-2-1zm7 4 3-2 2 1-3 2zm-6 4 2-2 2 1-2 2z"/><path fill="#596466" d="M4 10 16 17v12L4 23z"/><path fill="#444f53" d="m16 17 12-7v14l-12 5z"/><path fill="#858a82" d="m6 13 2-1 2 2-2 1zm6 4 2 1v2l-2-1zm7-1 2-2 2 1-2 2zm4-4 2-1v2l-2 1z"/><path fill="#273238" d="M3 9 16 2l13 7v15l-13 6-13-7zm1 1v13l11 6V17zm24-1-11 7v13l11-5zM5 9l11 6 11-6-11-6z"/></svg></span> BEDROCK EDITION</div>
+            <code class="server-value">mc.argust.my.id</code>
+            <div class="server-meta">Alamat server</div>
+            <div class="server-actions"><span class="port">Port: 22137</span><button class="copy" data-copy="mc.argust.my.id">SALIN ALAMAT</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="cara-masuk" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="kicker">Gampang untuk mulai</div>
+        <h2 id="how-title">Ketemu di dalam game.</h2>
+        <p class="how-intro">Tambahkan server World of GAR ke daftar server, lalu masuk dari edisi Minecraft yang kamu pakai.</p>
+        <div class="steps">
+          <article class="step reveal"><span class="step-number">01</span><h3>Buka daftar server</h3><p>Pilih Multiplayer di Java, atau Servers di Bedrock.</p></article>
+          <article class="step reveal"><span class="step-number">02</span><h3>Masukkan alamat</h3><p>Gunakan alamat dan port dari kartu edisi yang sesuai.</p></article>
+          <article class="step reveal"><span class="step-number">03</span><h3>Masuk ke World of GAR</h3><p>Simpan server, pilih World of GAR, lalu mulai bermain.</p></article>
+        </div>
+        <p class="how-note">Ajak temanmu juga. <strong>Petualangan lebih seru kalau bareng-bareng.</strong></p>
+      </div>
+    </section>
+
+    <section class="news" id="berita" aria-labelledby="news-title">
+      <div class="wrap">
+        <div class="news-heading reveal">
+          <div><div class="kicker">Kabar dari server</div><h2 id="news-title">Berita terbaru.</h2></div>
+          <p>Info dan update terbaru World of GAR akan muncul di sini.</p>
+        </div>
+        <div class="news-grid" id="news-list" aria-live="polite" aria-busy="true">
+          <div class="news-empty"><span class="news-empty-icon">GAR</span><div><h3>Memuat berita…</h3><p>Sebentar, kami ambil update terbarunya.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-inner">
+      <span class="footer-brand">WORLD OF GAR</span>
+      <span class="disclaimer">Server komunitas independen, tidak berafiliasi dengan Mojang atau Microsoft. · © <span id="year"></span></span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.copy').forEach(button => button.addEventListener('click', async () => {
+      const value = button.dataset.copy;
+      const originalLabel = button.textContent;
+      try {
+        await navigator.clipboard.writeText(value);
+        button.textContent = 'TERSALIN!';
+        button.classList.add('copied');
+      } catch {
+        const field = document.createElement('textarea');
+        field.value = value;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+        button.textContent = 'TERSALIN!';
+        button.classList.add('copied');
+      }
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+        button.classList.remove('copied');
+      }, 1600);
+    }));
+    const newsList = document.getElementById('news-list');
+    const showNewsMessage = (title, message, error = false) => {
+      newsList.className = error ? 'news-error' : 'news-empty';
+      newsList.replaceChildren();
+      if (error) {
+        newsList.textContent = `${title} ${message}`;
+        return;
+      }
+      const icon = document.createElement('span');
+      icon.className = 'news-empty-icon';
+      icon.textContent = 'GAR';
+      const body = document.createElement('div');
+      const heading = document.createElement('h3');
+      heading.textContent = title;
+      const description = document.createElement('p');
+      description.textContent = message;
+      body.append(heading, description);
+      newsList.append(icon, body);
+    };
+    async function loadNews() {
+      try {
+        const response = await fetch('news.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('news.json tidak ditemukan');
+        const entries = await response.json();
+        if (!Array.isArray(entries)) throw new Error('Format news.json harus berupa daftar berita');
+        const latest = entries
+          .filter(item => item && typeof item.title === 'string' && item.title.trim() && typeof item.summary === 'string' && item.summary.trim() && !Number.isNaN(Date.parse(item.date)))
+          .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+          .slice(0, 3);
+        newsList.replaceChildren();
+        newsList.setAttribute('aria-busy', 'false');
+        if (!latest.length) {
+          showNewsMessage('Belum ada berita terbaru.', 'Update World of GAR akan tampil di bagian ini.');
+          return;
+        }
+        newsList.className = 'news-grid';
+        const dateFormat = new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' });
+        latest.forEach(item => {
+          const card = document.createElement('article');
+          card.className = 'news-card';
+          const art = document.createElement('div');
+          art.className = 'news-art';
+          const tag = document.createElement('span');
+          tag.className = 'news-art-tag';
+          tag.textContent = typeof item.category === 'string' && item.category.trim() ? item.category.trim() : 'UPDATE';
+          art.append(tag);
+          const content = document.createElement('div');
+          content.className = 'news-card-body';
+          const meta = document.createElement('time');
+          meta.className = 'news-meta';
+          meta.dateTime = new Date(item.date).toISOString();
+          meta.textContent = dateFormat.format(new Date(item.date));
+          const title = document.createElement('h3');
+          title.textContent = item.title.trim();
+          const summary = document.createElement('p');
+          summary.textContent = item.summary.trim();
+          content.append(meta, title, summary);
+          card.append(art, content);
+          newsList.append(card);
+        });
+      } catch {
+        newsList.setAttribute('aria-busy', 'false');
+        showNewsMessage('Berita belum bisa dimuat.', 'Jalankan website melalui web server agar news.json dapat dibaca.', true);
+      }
+    }
+    loadNews();
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+  </script>
+</body>
+</html>

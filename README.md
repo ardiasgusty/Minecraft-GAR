@@ -1,1 +1,30 @@
-# Minecraft-GAR
+# World of GAR
+
+Website server Minecraft statis. Bagian **Berita Terbaru** mengambil data dari `news.json` dan menampilkan maksimal tiga berita paling baru.
+
+## Alamat server
+
+- **Java Edition:** `mc.argust.my.id` (tanpa port)
+- **Bedrock Edition:** `mc.argust.my.id`, port `22137`
+
+## Menambahkan berita
+
+Edit `news.json`, lalu tambahkan objek berita ke dalam array:
+
+```json
+[
+  {
+    "date": "2026-11-14",
+    "category": "UPDATE",
+    "title": "Judul update server",
+    "summary": "Ringkasan singkat untuk ditampilkan di halaman utama."
+  }
+]
+```
+
+- `date`: tanggal format `YYYY-MM-DD`; berita diurutkan dari yang terbaru.
+- `category`: label pendek seperti `UPDATE`, `EVENT`, atau `INFO`.
+- `title`: judul berita.
+- `summary`: ringkasan berita.
+
+Jika belum ada berita, halaman menampilkan pesan bahwa update akan muncul di sana. Karena berita dibaca menggunakan `fetch`, buka website melalui web server atau hosting statis, bukan langsung lewat `file://`.
