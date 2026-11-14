@@ -7,6 +7,8 @@ Website server Minecraft statis. Bagian **Berita Terbaru** mengambil data dari `
 - **Java Edition:** `mc.argust.my.id` (tanpa port)
 - **Bedrock Edition:** `mc.argust.my.id`, port `22137`
 
+Status online/offline Java dan Bedrock ditampilkan otomatis melalui widget **MCStatus.io**. Hasil dapat mengikuti cache penyedia status, jadi perubahan server mungkin tidak langsung terlihat.
+
 ## Menambahkan berita
 
 Edit `news.json`, lalu tambahkan objek berita ke dalam array:

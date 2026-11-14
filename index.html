@@ -87,6 +87,17 @@
     .bedrock .copy:hover { background: #1b6673; }
     .copy.copied { background: #263f2c; }
 
+    .status-section { padding: 42px 0; background: #e5edda; border-top: 1px solid rgba(48,83,39,.1); }
+    .status-row { display: grid; grid-template-columns: .62fr 1.38fr; align-items: center; gap: 30px; }
+    .status-heading { color: #2f4934; font-size: 21px; font-weight: 1000; line-height: 1.2; }
+    .status-subtitle { margin: 7px 0 0; color: #6a7963; font-size: 12px; }
+    .status-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .status-card { min-width: 0; padding: 15px 16px; background: #fffdf2; border: 1px solid rgba(48,83,39,.13); }
+    .status-card-label { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; color: #53684b; font-size: 10px; font-weight: 1000; letter-spacing: .1em; }
+    .status-widget { display: block; width: 100%; max-width: 330px; height: auto; min-height: 24px; object-fit: contain; object-position: left center; }
+    .status-provider { margin: 12px 0 0; text-align: right; color: #6c7b66; font-size: 10px; }
+    .status-provider a { text-decoration: underline; text-underline-offset: 2px; }
+
     .how { position: relative; overflow: hidden; padding: 90px 0 95px; background: var(--forest); color: #f9f5df; }
     .how:after { content: ''; position: absolute; top: -120px; right: -90px; width: 340px; height: 340px; border: 55px solid rgba(141,195,76,.08); transform: rotate(45deg); pointer-events: none; }
     .how .kicker { color: #c7ec79; }
@@ -148,6 +159,8 @@
       .join-head { align-items: start; flex-direction: column; gap: 13px; }
       .join-intro { max-width: 510px; }
       .server-cards { gap: 12px; }
+      .status-row { grid-template-columns: 1fr; gap: 17px; }
+      .status-provider { text-align: left; }
       .server-card { padding: 21px 19px; }
       .server-value { font-size: clamp(11px,2.5vw,16px); }
       .how { padding: 72px 0; }
@@ -175,6 +188,7 @@
       .hero-editions { margin-top: 24px; }
       .edition-chip { font-size: 9px; }
       .server-cards { grid-template-columns: 1fr; }
+      .status-cards { grid-template-columns: 1fr; }
       .news-grid { grid-template-columns: 1fr; }
       .news-art { height: 130px; }
       .news-empty { align-items: start; padding: 20px; }
@@ -238,6 +252,30 @@
             <div class="server-meta">Alamat server</div>
             <div class="server-actions"><span class="port">Port: 22137</span><button class="copy" data-copy="mc.argust.my.id">SALIN ALAMAT</button></div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="status-section" aria-label="Status server saat ini">
+      <div class="wrap">
+        <div class="status-row">
+          <div>
+            <div class="status-heading">Cek status server</div>
+            <p class="status-subtitle">Pengecekan otomatis untuk tiap edisi.</p>
+          </div>
+          <div>
+            <div class="status-cards">
+              <div class="status-card">
+                <div class="status-card-label">JAVA EDITION</div>
+                <img class="status-widget" src="https://api.mcstatus.io/v2/widget/java/mc.argust.my.id?dark=false&amp;rounded=false&amp;transparent=true" alt="Status terkini server Java World of GAR dari MCStatus.io" loading="lazy">
+              </div>
+              <div class="status-card">
+                <div class="status-card-label">BEDROCK EDITION</div>
+                <img class="status-widget" src="https://api.mcstatus.io/v2/widget/bedrock/mc.argust.my.id:22137?dark=false&amp;rounded=false&amp;transparent=true" alt="Status terkini server Bedrock World of GAR dari MCStatus.io" loading="lazy">
+              </div>
+            </div>
+            <p class="status-provider">Data status oleh <a href="https://mcstatus.io" target="_blank" rel="noopener noreferrer">MCStatus.io</a></p>
+          </div>
         </div>
       </div>
     </section>
