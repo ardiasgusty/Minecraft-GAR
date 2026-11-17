@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "date": "2026-11-17",
+    "category": "EVENT",
+    "title": "Event Desa Makin Berwarna",
+    "summary": "Ayo buat desa World of GAR makin hidup! Bangun dan hias bangunan sekreatif mungkin. Ada hadiah untuk bangunan terbaik, bangunan terbanyak, dan semua peserta.",
+    "details": [
+      "Bangun dan hias bangunan sekreatif mungkin untuk membuat desa World of GAR makin berwarna.",
+      "Ada tiga kategori hadiah: bangunan terbaik, jumlah bangunan terbanyak, dan hadiah hiburan untuk semua pemain yang berpartisipasi.",
+      "Jadwal event, aturan penilaian, dan rincian hadiah akan diumumkan menyusul."
+    ]
+  }
+]

@@ -115,7 +115,8 @@
     .news-heading h2 { margin-top: 14px; }
     .news-heading p { max-width: 360px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.6; }
     .news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .news-card { overflow: hidden; background: #fff; border: 1px solid rgba(38,67,34,.12); box-shadow: 0 5px 0 rgba(45,71,34,.1); }
+    .news-card { display:block; overflow: hidden; background: #fff; color:inherit; border: 1px solid rgba(38,67,34,.12); box-shadow: 0 5px 0 rgba(45,71,34,.1); transition: transform .18s, box-shadow .18s; }
+    .news-card:hover { transform:translateY(-3px); box-shadow:0 8px 0 rgba(45,71,34,.12); }
     .news-art { height: 152px; position: relative; overflow: hidden; display: flex; align-items: end; padding: 16px 18px; background: linear-gradient(140deg,#76be4a,#c9e77a); }
     .news-art:before,.news-art:after { content: ''; position: absolute; width: 70px; height: 70px; background: rgba(255,255,255,.18); transform: rotate(45deg); }
     .news-art:before { top: -25px; right: 30px; box-shadow: 48px 48px 0 rgba(24,77,39,.12); }
@@ -128,11 +129,39 @@
     .news-meta:before { content: ''; width: 6px; height: 6px; background: #75b94c; }
     .news-card h3 { margin: 12px 0 8px; color: #263a2b; font-size: 19px; line-height: 1.25; font-weight: 1000; }
     .news-card p { margin: 0; color: #677363; font-size: 13px; line-height: 1.65; }
+    .news-read-more { display:inline-block; margin-top:14px; color:#397841; font-size:11px; font-weight:1000; letter-spacing:.06em; }
     .news-empty { min-height: 170px; display: flex; align-items: center; gap: 20px; padding: 28px; background: #edf4df; border: 1px solid rgba(38,67,34,.11); }
     .news-empty-icon { width: 56px; height: 56px; flex: 0 0 56px; display: grid; place-items: center; background: #76be4a; color: #173824; box-shadow: inset -7px -7px rgba(24,77,39,.19); font: 8px var(--pixel); }
     .news-empty h3 { margin: 0 0 7px; color: #2b432d; font-size: 18px; }
     .news-empty p { margin: 0; color: #687664; font-size: 14px; line-height: 1.55; }
     .news-error { color: #73543a; background: #fff0d5; border: 1px solid rgba(156,103,49,.2); padding: 20px; font-size: 14px; }
+    .news-dialog { width:min(640px,calc(100% - 32px)); max-height:min(80vh,720px); padding:0; overflow:auto; border:2px solid #315c31; background:#fffdf2; color:var(--ink); box-shadow:0 18px 70px rgba(8,26,16,.35); }
+    .news-dialog::backdrop { background:rgba(10,29,17,.72); backdrop-filter:blur(3px); }
+    .news-dialog-card { position:relative; padding:32px; }
+    .news-dialog-close { position:absolute; top:14px; right:14px; width:38px; height:38px; border:0; background:#eaf2dc; color:#24452a; font-size:23px; font-weight:800; cursor:pointer; }
+    .news-dialog-meta { display:flex; align-items:center; gap:10px; padding-right:44px; color:#61715a; font-size:11px; font-weight:900; }
+    .news-dialog-tag { padding:6px 8px; background:#173824; color:#f4f4df; font:8px var(--pixel); }
+    .news-dialog h2 { margin:19px 0 16px; font-size:clamp(26px,5vw,38px); line-height:1.15; }
+    .news-dialog-body { color:#566451; font-size:15px; line-height:1.75; }
+    .news-dialog-body p { margin:0 0 12px; }
+    .rewards { padding: 82px 0 88px; background: #fffdf2; }
+    .rewards-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
+    .rewards-heading h2 { margin-top:14px; }
+    .rewards-heading p { max-width:420px; margin:0 0 4px; color:var(--muted); font-size:14px; line-height:1.6; }
+    .reward-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
+    .reward-card { padding:19px 20px; background:#f2f6e7; border:1px solid rgba(38,67,34,.12); box-shadow:0 4px 0 rgba(45,71,34,.08); }
+    .reward-top { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .reward-level { color:#315c31; font:10px var(--pixel); }
+    .reward-tier { padding:6px 8px; background:#dcebc7; color:#4b6d37; font-size:9px; font-weight:1000; letter-spacing:.08em; text-transform:uppercase; }
+    .reward-money { margin:17px 0 13px; color:#2b5e32; font-size:22px; font-weight:1000; font-variant-numeric:tabular-nums; }
+    .reward-money small { color:#71806a; font-size:11px; font-weight:800; }
+    .reward-gear { display:grid; gap:5px; color:#53654d; font-size:12px; line-height:1.45; }
+    .reward-note { margin:20px 0 0; color:#71806a; font-size:12px; line-height:1.6; }
+    .rank-range-title { margin:0 0 12px; color:#4b6d37; font-size:12px; font-weight:1000; letter-spacing:.08em; text-transform:uppercase; }
+    .rank-ranges { display:grid; grid-template-columns:repeat(auto-fit,minmax(125px,1fr)); gap:9px; margin-bottom:27px; }
+    .rank-range { padding:12px 13px; background:#eaf2dc; border:1px solid rgba(38,67,34,.1); }
+    .rank-range-name { display:block; color:#315c31; font-size:11px; font-weight:1000; letter-spacing:.07em; }
+    .rank-range-level { display:block; margin-top:5px; color:#71806a; font-size:11px; font-weight:800; }
     footer { padding: 24px 0; background: #102b1c; color: #cfdbc7; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 11px; }
     .footer-brand { color: #e3f29c; font: 8px var(--pixel); }
@@ -165,6 +194,9 @@
       .server-value { font-size: clamp(11px,2.5vw,16px); }
       .how { padding: 72px 0; }
       .news { padding: 72px 0 78px; }
+      .rewards { padding: 72px 0 76px; }
+      .rewards-heading { align-items: start; flex-direction: column; gap: 12px; }
+      .reward-grid { grid-template-columns: repeat(2,1fr); }
       .news-heading { align-items: start; flex-direction: column; gap: 12px; }
       .news-grid { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr; gap: 9px; }
@@ -190,6 +222,7 @@
       .server-cards { grid-template-columns: 1fr; }
       .status-cards { grid-template-columns: 1fr; }
       .news-grid { grid-template-columns: 1fr; }
+      .reward-grid { grid-template-columns: 1fr; }
       .news-art { height: 130px; }
       .news-empty { align-items: start; padding: 20px; }
       .server-card { min-height: 218px; }
@@ -208,6 +241,7 @@
       </a>
       <div class="nav-links">
         <a href="#cara-masuk">CARA MASUK</a>
+        <a href="#hadiah-level">HADIAH LEVEL</a>
         <a href="#berita">BERITA</a>
         <a class="nav-cta" href="#bergabung">GABUNG SEKARANG ↗</a>
       </div>
@@ -256,6 +290,18 @@
       </div>
     </section>
 
+    <section class="news" id="berita" aria-labelledby="news-title">
+      <div class="wrap">
+        <div class="news-heading reveal">
+          <div><div class="kicker">Kabar dari server</div><h2 id="news-title">Berita terbaru.</h2></div>
+          <p>Info dan update terbaru World of GAR akan muncul di sini.</p>
+        </div>
+        <div class="news-grid" id="news-list" aria-live="polite" aria-busy="true">
+          <div class="news-empty"><span class="news-empty-icon">GAR</span><div><h3>Memuat berita…</h3><p>Sebentar, kami ambil update terbarunya.</p></div></div>
+        </div>
+      </div>
+    </section>
+
     <section class="status-section" aria-label="Status server saat ini">
       <div class="wrap">
         <div class="status-row">
@@ -294,18 +340,36 @@
       </div>
     </section>
 
-    <section class="news" id="berita" aria-labelledby="news-title">
+    <section class="rewards" id="hadiah-level" aria-labelledby="rewards-title">
       <div class="wrap">
-        <div class="news-heading reveal">
-          <div><div class="kicker">Kabar dari server</div><h2 id="news-title">Berita terbaru.</h2></div>
-          <p>Info dan update terbaru World of GAR akan muncul di sini.</p>
+        <div class="rewards-heading reveal">
+          <div><div class="kicker">Milestone level 5–100</div><h2 id="rewards-title">Hadiah kenaikan level.</h2></div>
+          <p>Setiap milestone memberi GC, 1 set armor, 1 weapon, dan 1 set peralatan.</p>
         </div>
-        <div class="news-grid" id="news-list" aria-live="polite" aria-busy="true">
-          <div class="news-empty"><span class="news-empty-icon">GAR</span><div><h3>Memuat berita…</h3><p>Sebentar, kami ambil update terbarunya.</p></div></div>
+        <h3 class="rank-range-title">Jalur rank pemain</h3>
+        <div class="rank-ranges" aria-label="Rentang rank pemain">
+          <div class="rank-range"><span class="rank-range-name">ROOKIE</span><span class="rank-range-level">Level 1–9</span></div>
+          <div class="rank-range"><span class="rank-range-name">MEMBER</span><span class="rank-range-level">Level 10–19</span></div>
+          <div class="rank-range"><span class="rank-range-name">ADVANCED</span><span class="rank-range-level">Level 20–34</span></div>
+          <div class="rank-range"><span class="rank-range-name">ELITE</span><span class="rank-range-level">Level 35–49</span></div>
+          <div class="rank-range"><span class="rank-range-name">MASTER</span><span class="rank-range-level">Level 50–74</span></div>
+          <div class="rank-range"><span class="rank-range-name">LEGEND</span><span class="rank-range-level">Level 75–99</span></div>
+          <div class="rank-range"><span class="rank-range-name">MYTHIC</span><span class="rank-range-level">Level 100</span></div>
         </div>
+        <div class="reward-grid" id="reward-list"></div>
+        <p class="reward-note">Setiap set armor berisi helm, chestplate, leggings, dan boots. Set peralatan berisi pickaxe, axe, shovel, dan hoe.</p>
       </div>
     </section>
+
   </main>
+  <dialog class="news-dialog" id="news-dialog" aria-labelledby="news-dialog-title">
+    <div class="news-dialog-card">
+      <button class="news-dialog-close" id="news-dialog-close" type="button" aria-label="Tutup berita">×</button>
+      <div class="news-dialog-meta"><span class="news-dialog-tag" id="news-dialog-category"></span><time id="news-dialog-date"></time></div>
+      <h2 id="news-dialog-title"></h2>
+      <div class="news-dialog-body" id="news-dialog-body"></div>
+    </div>
+  </dialog>
   <footer>
     <div class="wrap footer-inner">
       <span class="footer-brand">WORLD OF GAR</span>
@@ -340,6 +404,15 @@
       }, 1600);
     }));
     const newsList = document.getElementById('news-list');
+    const newsDialog = document.getElementById('news-dialog');
+    const newsDialogCategory = document.getElementById('news-dialog-category');
+    const newsDialogDate = document.getElementById('news-dialog-date');
+    const newsDialogTitle = document.getElementById('news-dialog-title');
+    const newsDialogBody = document.getElementById('news-dialog-body');
+    document.getElementById('news-dialog-close').addEventListener('click', () => newsDialog.close());
+    newsDialog.addEventListener('click', event => {
+      if (event.target === newsDialog) newsDialog.close();
+    });
     const showNewsMessage = (title, message, error = false) => {
       newsList.className = error ? 'news-error' : 'news-empty';
       newsList.replaceChildren();
@@ -377,8 +450,26 @@
         newsList.className = 'news-grid';
         const dateFormat = new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' });
         latest.forEach(item => {
-          const card = document.createElement('article');
+          const card = document.createElement('a');
           card.className = 'news-card';
+          card.href = '#news-title';
+          card.setAttribute('aria-haspopup', 'dialog');
+          card.setAttribute('aria-label', `Baca berita: ${item.title.trim()}`);
+          card.addEventListener('click', event => {
+            event.preventDefault();
+            newsDialogCategory.textContent = typeof item.category === 'string' && item.category.trim() ? item.category.trim() : 'UPDATE';
+            newsDialogDate.dateTime = new Date(item.date).toISOString();
+            newsDialogDate.textContent = dateFormat.format(new Date(item.date));
+            newsDialogTitle.textContent = item.title.trim();
+            newsDialogBody.replaceChildren();
+            const paragraphs = Array.isArray(item.details) ? item.details.filter(text => typeof text === 'string' && text.trim()) : [];
+            (paragraphs.length ? paragraphs : [item.summary.trim()]).forEach(text => {
+              const paragraph = document.createElement('p');
+              paragraph.textContent = text.trim();
+              newsDialogBody.append(paragraph);
+            });
+            newsDialog.showModal();
+          });
           const art = document.createElement('div');
           art.className = 'news-art';
           const tag = document.createElement('span');
@@ -395,7 +486,10 @@
           title.textContent = item.title.trim();
           const summary = document.createElement('p');
           summary.textContent = item.summary.trim();
-          content.append(meta, title, summary);
+          const readMore = document.createElement('span');
+          readMore.className = 'news-read-more';
+          readMore.textContent = 'BACA SELENGKAPNYA →';
+          content.append(meta, title, summary, readMore);
           card.append(art, content);
           newsList.append(card);
         });
@@ -405,6 +499,50 @@
       }
     }
     loadNews();
+    const rewardMilestones = [
+      [5, 'ROOKIE', 250000, 'kulit', 'kayu', 'kayu'],
+      [10, 'MEMBER', 300000, 'tembaga', 'batu', 'tembaga'],
+      [20, 'ADVANCED', 450000, 'emas', 'batu', 'emas'],
+      [30, 'ADVANCED', 500000, 'emas', 'besi', 'besi'],
+      [35, 'ELITE', 500000, 'chainmail', 'besi', 'besi'],
+      [40, 'ELITE', 500000, 'chainmail', 'emas', 'emas'],
+      [50, 'MASTER', 600000, 'besi', 'emas', 'besi'],
+      [60, 'MASTER', 600000, 'besi', 'emas', 'besi'],
+      [70, 'MASTER', 700000, 'emas', 'emas', 'emas'],
+      [75, 'LEGEND', 700000, 'emas', 'emas', 'emas'],
+      [80, 'LEGEND', 800000, 'berlian', 'emas', 'berlian'],
+      [85, 'LEGEND', 800000, 'berlian', 'berlian', 'berlian'],
+      [90, 'LEGEND', 900000, 'berlian', 'berlian', 'berlian'],
+      [95, 'LEGEND', 900000, 'berlian', 'berlian', 'berlian'],
+      [100, 'MYTHIC', 1000000, 'netherite', 'berlian', 'netherite']
+    ];
+    const rewardList = document.getElementById('reward-list');
+    const rewardMoneyFormat = new Intl.NumberFormat('id-ID');
+    rewardMilestones.forEach(([level, tier, money, armor, tools, sword]) => {
+      const card = document.createElement('article');
+      card.className = 'reward-card reveal';
+      const top = document.createElement('div');
+      top.className = 'reward-top';
+      const levelLabel = document.createElement('span');
+      levelLabel.className = 'reward-level';
+      levelLabel.textContent = `LEVEL ${level}`;
+      const tierLabel = document.createElement('span');
+      tierLabel.className = 'reward-tier';
+      tierLabel.textContent = tier;
+      top.append(levelLabel, tierLabel);
+      const moneyLabel = document.createElement('div');
+      moneyLabel.className = 'reward-money';
+      moneyLabel.textContent = `+${rewardMoneyFormat.format(money)} GC`;
+      const gear = document.createElement('div');
+      gear.className = 'reward-gear';
+      [`1 Set Armor: ${armor}`, `1 Weapon: ${sword}`, `1 Set Peralatan: ${tools}`].forEach(label => {
+        const item = document.createElement('span');
+        item.textContent = label;
+        gear.append(item);
+      });
+      card.append(top, moneyLabel, gear);
+      rewardList.append(card);
+    });
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
