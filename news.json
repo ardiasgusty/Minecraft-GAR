@@ -1,5 +1,85 @@
 [
   {
+    "date": "2026-11-18",
+    "category": "INFO",
+    "title": "Cara Mendapatkan GAR Coin (GC)",
+    "summary": "Kumpulkan GC dengan menambang ore dan mineral, mengalahkan monster, atau menjual barang di toko server.",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Ada beberapa cara untuk mendapatkan GAR Coin (GC) di World of GAR. Kamu bisa menambang ore dan mineral, mengalahkan monster atau hewan, serta menjual barang di toko server."
+      },
+      {
+        "type": "table",
+        "title": "Reward Ore / Mineral",
+        "headers": [
+          "Ore / Mineral",
+          "Reward"
+        ],
+        "rows": [
+          [
+            "Coal, Copper, Nether Quartz",
+            "500 GC"
+          ],
+          [
+            "Iron, Redstone, Lapis, Nether Gold",
+            "1.000 GC"
+          ],
+          [
+            "Gold",
+            "1.500 GC"
+          ],
+          [
+            "Diamond, Emerald",
+            "2.000 GC"
+          ],
+          [
+            "Ancient Debris",
+            "2.500 GC"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Reward Monster dan Hewan",
+        "headers": [
+          "Hewan / Monster",
+          "Reward"
+        ],
+        "rows": [
+          [
+            "Chicken, Cow, Pig, Sheep, Rabbit",
+            "500 GC"
+          ],
+          [
+            "Zombie, Skeleton, Spider, Creeper",
+            "1.000 GC"
+          ],
+          [
+            "Enderman, Witch, Slime, Drowned",
+            "1.500 GC"
+          ],
+          [
+            "Blaze, Ghast, Guardian, Piglin Brute",
+            "2.000 GC"
+          ],
+          [
+            "Ravager, Evoker, Hoglin, Wither Skeleton",
+            "2.500 GC"
+          ],
+          [
+            "Elder Guardian, Wither, Ender Dragon",
+            "3.000 GC"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Punya barang yang ingin dijual? Jual barang tersebut di toko server untuk mendapatkan uang juga. Selamat mengumpulkan GC!"
+      }
+    ]
+  },
+  {
     "date": "2026-11-17",
     "category": "EVENT",
     "title": "Event Desa Makin Berwarna",

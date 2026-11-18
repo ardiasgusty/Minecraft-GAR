@@ -144,6 +144,12 @@
     .news-dialog h2 { margin:19px 0 16px; font-size:clamp(26px,5vw,38px); line-height:1.15; }
     .news-dialog-body { color:#566451; font-size:15px; line-height:1.75; }
     .news-dialog-body p { margin:0 0 12px; }
+    .news-table-wrap { margin: 18px 0 22px; overflow-x:auto; border:1px solid rgba(38,67,34,.16); }
+    .news-table-title { margin: 0; padding: 11px 13px; background:#eaf2dc; color:#24452a; font-size:16px; line-height:1.35; }
+    .news-table { width:100%; border-collapse:collapse; background:#fff; font-size:13px; line-height:1.5; }
+    .news-table th,.news-table td { padding:10px 13px; border-top:1px solid rgba(38,67,34,.12); text-align:left; vertical-align:top; }
+    .news-table th { background:#f5f7ec; color:#315c31; font-size:11px; letter-spacing:.04em; text-transform:uppercase; }
+    .news-table td:last-child { white-space:nowrap; font-weight:800; color:#315c31; }
     .rewards { padding: 82px 0 88px; background: #fffdf2; }
     .rewards-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
     .rewards-heading h2 { margin-top:14px; }
@@ -462,12 +468,55 @@
             newsDialogDate.textContent = dateFormat.format(new Date(item.date));
             newsDialogTitle.textContent = item.title.trim();
             newsDialogBody.replaceChildren();
-            const paragraphs = Array.isArray(item.details) ? item.details.filter(text => typeof text === 'string' && text.trim()) : [];
-            (paragraphs.length ? paragraphs : [item.summary.trim()]).forEach(text => {
-              const paragraph = document.createElement('p');
-              paragraph.textContent = text.trim();
-              newsDialogBody.append(paragraph);
-            });
+            if (Array.isArray(item.content) && item.content.length) {
+              item.content.forEach(block => {
+                if (block?.type === 'table' && Array.isArray(block.headers) && Array.isArray(block.rows)) {
+                  const wrap = document.createElement('section');
+                  wrap.className = 'news-table-wrap';
+                  if (typeof block.title === 'string' && block.title.trim()) {
+                    const heading = document.createElement('h3');
+                    heading.className = 'news-table-title';
+                    heading.textContent = block.title.trim();
+                    wrap.append(heading);
+                  }
+                  const table = document.createElement('table');
+                  table.className = 'news-table';
+                  const thead = document.createElement('thead');
+                  const headerRow = document.createElement('tr');
+                  block.headers.forEach(label => {
+                    const th = document.createElement('th');
+                    th.scope = 'col';
+                    th.textContent = String(label);
+                    headerRow.append(th);
+                  });
+                  thead.append(headerRow);
+                  const tbody = document.createElement('tbody');
+                  block.rows.forEach(row => {
+                    const tr = document.createElement('tr');
+                    row.forEach(value => {
+                      const td = document.createElement('td');
+                      td.textContent = String(value);
+                      tr.append(td);
+                    });
+                    tbody.append(tr);
+                  });
+                  table.append(thead, tbody);
+                  wrap.append(table);
+                  newsDialogBody.append(wrap);
+                } else if (block?.type === 'paragraph' && typeof block.text === 'string' && block.text.trim()) {
+                  const paragraph = document.createElement('p');
+                  paragraph.textContent = block.text.trim();
+                  newsDialogBody.append(paragraph);
+                }
+              });
+            } else {
+              const paragraphs = Array.isArray(item.details) ? item.details.filter(text => typeof text === 'string' && text.trim()) : [];
+              (paragraphs.length ? paragraphs : [item.summary.trim()]).forEach(text => {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = text.trim();
+                newsDialogBody.append(paragraph);
+              });
+            }
             newsDialog.showModal();
           });
           const art = document.createElement('div');
